@@ -26,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased py-24`}
       >
-        <h1 className="text-4xl mb-6">Server komponenter | Next.js</h1>
-        {children}
+        <main className="max-w-[650px] m-auto">
+          <h1 className="text-4xl mb-6">Server komponenter | Next.js</h1>
+          {children}
+        </main>
       </body>
     </html>
   );

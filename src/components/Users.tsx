@@ -1,17 +1,19 @@
 import "server-only";
-import { db } from "../drizzle";
+import { getUsers } from "../user";
+import UserDeleteClient from "./UserDelete.client";
 
 export default async function Users() {
-  const users = await db.query.user.findMany();
+  const users = await getUsers();
   return (
     <section>
-      <table>
+      <table className="data-table">
         <thead>
           <tr>
             <td>ID</td>
             <td>Fornavn</td>
             <td>Etternavn</td>
             <td>E-post</td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +24,9 @@ export default async function Users() {
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
                 <td>{user.email}</td>
+                <td>
+                  <UserDeleteClient userId={user.id} />
+                </td>
               </tr>
             );
           })}
