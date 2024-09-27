@@ -35,7 +35,7 @@ export async function addUser(
       return {
         status: "error",
         message: "Fornavn, etternavn og e-post må oppgis i gyldig format.",
-      };
+      } as const;
     }
 
     const result = await db.insert(user).values(parseResult.data);
@@ -48,7 +48,7 @@ export async function addUser(
     return {
       status: "error",
       message: "Ingen bruker ble opprettet av en eller annen grunn.",
-    };
+    } as const;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     console.log("Error when creating user: ", e);
@@ -72,7 +72,7 @@ export async function deleteUser(userId: number): Promise<ActionResult> {
     return {
       status: "error",
       message: "Ingen brukere ble slettet av en eller annen grunn.",
-    };
+    } as const;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     console.log("Error when deleting user: ", e);
