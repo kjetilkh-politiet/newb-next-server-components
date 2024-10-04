@@ -1,4 +1,5 @@
 import { db } from "./drizzle";
+import { unstableCache } from "./util";
 
 export async function getUsers() {
   return await db.query.user.findMany({
@@ -10,3 +11,7 @@ export async function getUsers() {
     },
   });
 }
+
+export const getCachedUsers = unstableCache(async () => getUsers(), undefined, {
+  tags: ["user"],
+});

@@ -1,9 +1,9 @@
 import "server-only";
-import { getUsers } from "../user";
+import { getCachedUsers } from "../user";
 import UserDeleteClient from "./UserDelete.client";
 
 export default async function Users() {
-  const users = await getUsers();
+  const users = await getCachedUsers();
   return (
     <section>
       <table className="data-table">

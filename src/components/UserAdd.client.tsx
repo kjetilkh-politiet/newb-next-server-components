@@ -14,6 +14,11 @@ export default function UserAddClient() {
   useEffect(() => {
     if (state?.status === "success") {
       router.refresh();
+
+      // reset form
+      setFirstName("");
+      setLastName("");
+      setEmail("");
     }
   }, [router, state?.status]);
 
