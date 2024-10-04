@@ -1,11 +1,9 @@
 "use client";
 
 import { deleteUser } from "@/actions/user";
-import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
 export default function UserDeleteClient({ userId }: { userId: number }) {
-	const router = useRouter();
 	const [, startTransition] = useTransition();
 	const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,9 +14,6 @@ export default function UserDeleteClient({ userId }: { userId: number }) {
 				onClick={() => {
 					startTransition(async () => {
 						const result = await deleteUser(userId);
-						if (result.status === "success") {
-							router.refresh();
-						}
 						if (result.status === "error") {
 							setErrorMessage(result.message);
 						}
