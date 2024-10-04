@@ -29,12 +29,10 @@ export async function addUser(
 ): Promise<ActionResult> {
 	try {
 		const formDataObject = Object.fromEntries(formData);
-		console.log("Form data object", formDataObject);
-
 		const parseResult = zCreateUser.safeParse(formDataObject);
 
 		if (!parseResult.success) {
-			console.log("Parse user error", parseResult.error);
+			console.error("Parse user error", parseResult.error);
 			return {
 				status: "error",
 				message:
@@ -58,7 +56,7 @@ export async function addUser(
 		} as const;
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (e) {
-		console.log("Error when creating user: ", e);
+		console.error("Error when creating user: ", e);
 
 		return {
 			status: "error",
@@ -85,7 +83,7 @@ export async function deleteUser(userId: number): Promise<ActionResult> {
 		} as const;
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (e) {
-		console.log("Error when deleting user: ", e);
+		console.error("Error when deleting user: ", e);
 
 		return {
 			status: "error",
