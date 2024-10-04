@@ -1,0 +1,9 @@
+
+build
+node_modules
+target
+.next
+.vscode
+
+package.json
+package-lock.json
