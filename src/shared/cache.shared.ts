@@ -1,3 +1,3 @@
 export const CacheTags = {
-  users: "users",
+	users: "users",
 } as const;
