@@ -1,5 +1,5 @@
 import "server-only";
-import { getCachedUsers } from "../user";
+import { getCachedUsers } from "../server/user";
 import UserDeleteClient from "./UserDelete.client";
 
 export default async function Users() {

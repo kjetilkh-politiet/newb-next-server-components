@@ -1,7 +1,8 @@
 "use server";
 
-import { db } from "@/src/drizzle";
-import { user } from "@/src/schema";
+import { db } from "@/src/server/drizzle";
+import { user } from "@/src/server/schema";
+import { CacheTags } from "@/src/shared/cache.shared";
 import { eq } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
@@ -41,7 +42,7 @@ export async function addUser(
 
     const result = await db.insert(user).values(parseResult.data);
     if (result[0].affectedRows > 0) {
-      revalidateTag("user");
+      revalidateTag(CacheTags.users);
       return {
         status: "success",
         message: "Bruker lagt til.",
@@ -67,7 +68,7 @@ export async function deleteUser(userId: number): Promise<ActionResult> {
   try {
     const result = await db.delete(user).where(eq(user.id, userId));
     if (result[0].affectedRows > 0) {
-      revalidateTag("user");
+      revalidateTag(CacheTags.users);
       return {
         status: "success",
         message: "Bruker slettet.",
