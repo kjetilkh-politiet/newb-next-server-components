@@ -54,10 +54,7 @@ export async function addUser(
 			status: "error",
 			message: "Ingen bruker ble opprettet av en eller annen grunn.",
 		} as const;
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	} catch (e) {
-		console.error("Error when creating user: ", e);
-
+	} catch {
 		return {
 			status: "error",
 			message: `En feil oppstod ved opprettelse av bruker.`,
@@ -81,10 +78,7 @@ export async function deleteUser(userId: number): Promise<ActionResult> {
 			status: "error",
 			message: "Ingen brukere ble slettet av en eller annen grunn.",
 		} as const;
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	} catch (e) {
-		console.error("Error when deleting user: ", e);
-
+	} catch {
 		return {
 			status: "error",
 			message: `En feil oppstod ved sletting av bruker.`,
