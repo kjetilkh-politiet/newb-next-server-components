@@ -2,7 +2,7 @@
 
 import { db } from "@/src/server/drizzle";
 import { user } from "@/src/server/schema";
-import { CacheTags } from "@/src/shared/cache.shared";
+import { CacheTags } from "@/src/utils/cache.shared";
 import { eq } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";

@@ -1,7 +1,7 @@
 import "server-only";
 import { db } from "./drizzle";
 import { unstableCache } from "./util";
-import { CacheTags } from "../shared/cache.shared";
+import { CacheTags } from "../utils/cache.shared";
 
 export async function getUsers() {
 	return await db.query.user.findMany({
