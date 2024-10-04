@@ -32,6 +32,7 @@ export async function addUser(
 		console.log("Form data object", formDataObject);
 
 		const parseResult = zCreateUser.safeParse(formDataObject);
+
 		if (!parseResult.success) {
 			console.log("Parse user error", parseResult.error);
 			return {
@@ -42,6 +43,7 @@ export async function addUser(
 		}
 
 		const result = await db.insert(user).values(parseResult.data);
+
 		if (result[0].affectedRows > 0) {
 			revalidateTag(CacheTags.users);
 			return {
@@ -68,6 +70,7 @@ export async function addUser(
 export async function deleteUser(userId: number): Promise<ActionResult> {
 	try {
 		const result = await db.delete(user).where(eq(user.id, userId));
+
 		if (result[0].affectedRows > 0) {
 			revalidateTag(CacheTags.users);
 			return {
