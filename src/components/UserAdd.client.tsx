@@ -1,11 +1,9 @@
 "use client";
 
 import { addUser } from "@/actions/user";
-import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 
 export default function UserAddClient() {
-	const router = useRouter();
 	const [state, formAction] = useActionState(addUser, null);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -18,7 +16,7 @@ export default function UserAddClient() {
 			setLastName("");
 			setEmail("");
 		}
-	}, [router, state?.status]);
+	}, [state?.status]);
 
 	return (
 		<form className="grid gap-6" action={formAction}>
